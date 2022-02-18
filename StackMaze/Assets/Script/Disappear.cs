@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Disappear : MonoBehaviour
 {
-    Vector3 After = new Vector3(0f, 0.1205354f, 0f);
-    Vector3 Pos1;
-    GameObject Temp1;
     void Start()
     {
         
@@ -17,17 +14,11 @@ public class Disappear : MonoBehaviour
     {
         
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.tag == "normal")
-    //    {
-            
-    //        for (int i = 0; i <= 5; i++)
-    //        {
-    //            Pos1 = new Vector3(-0.05f, 4.1f, PlayerController.Instance.DashParent.transform.localPosition.z + i - 0.585f);
-                
-    //        }
-    //        Temp1 = Instantiate(PlayerController.Instance.Cube, Pos1, Quaternion.identity);
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bul")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

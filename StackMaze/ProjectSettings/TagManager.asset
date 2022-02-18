@@ -11,6 +11,13 @@ TagManager:
   - walls
   - Ate
   - normal1
+  - gun
+  - barrier
+  - bullet
+  - shooted
+  - bul
+  - groundspawn
+  - gunground
   layers:
   - Default
   - TransparentFX

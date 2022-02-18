@@ -23,6 +23,7 @@ public class EatUp2 : MonoBehaviour
         {
             other.gameObject.tag = "normal";
             PlayerController.Instance.PickDash(other.gameObject);
+            PlayerController.Instance.PrevDash.GetComponent<BoxCollider>().isTrigger = false;
             other.gameObject.AddComponent<Rigidbody>();
             other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -30,34 +31,17 @@ public class EatUp2 : MonoBehaviour
             other.gameObject.AddComponent<EatUp2>();
             //Destroy(this);
         }
-       if(other.gameObject.tag == "bridge")
+        if (other.gameObject.tag == "bridge")
         {
-                for (i = 0; i <= 5; i++)
-                {
-
-                    Pos = new Vector3(-0.05f, 4.1f, PlayerController.Instance.DashParent.transform.localPosition.z + i - 0.585f);
-                    Temp = Instantiate(PlayerController.Instance.Cube, Pos, Quaternion.identity);
-                }
-            //Temp.transform.position = new Vector3(-0.05f, 4.1f, PlayerController.Instance.DashParent.transform.localPosition.z + i - 0.585f);
-            //i += 1;
-
+            for (i = 0; i <= 6; i++)
+            {
+                Pos = new Vector3(-0.05f, 4.2f, PlayerController.Instance.DashParent.transform.localPosition.z + i - 7.5f);
+                Temp = Instantiate(PlayerController.Instance.Cube, Pos, Quaternion.identity);
+            }
             this.gameObject.SetActive(false);
             PlayerController.Instance.DashParent.transform.localPosition -= After;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;         
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.gameObject.tag == "bridge")
-    //    {
-    //        PlayerController.Instance.PrevDash = Instantiate(PlayerController.Instance.PrevDash, PlayerController.Instance.PrevDash.transform.position, Quaternion.identity);
-    //        Destroy(this.gameObject);
-    //        PlayerController.Instance.DashParent.transform.localPosition -= After;
-    //        collision.gameObject.GetComponent<Rigidbody>().useGravity = false;
-    //        collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-    //        Debug.Log("Done");
-    //    }
-    //}
-
 }
